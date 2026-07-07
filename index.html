@@ -75,24 +75,11 @@ img,svg{min-width:0}
 .ico{stroke:var(--teal);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
 /* ---- CTAボタン（LP全体で統一する画像ボタン） ---- */
-.ctabtn-link{display:block;-webkit-tap-highlight-color:rgba(0,0,0,0)}
 .ctabtn-img{display:block;width:100%;height:auto}
-.ctaband--hero{padding-top:26px}
+.hero__ctabtn{position:absolute;top:87%;left:12%;width:76%;display:block;-webkit-tap-highlight-color:rgba(0,0,0,0)}
 .imgsec__ctapad{position:absolute;display:flex;align-items:center;justify-content:center;
   background:#FBF6F0;border-radius:999px;overflow:hidden;-webkit-tap-highlight-color:rgba(0,0,0,0)}
 .imgsec__ctapad img{display:block;width:auto;height:86%}
-.ctaband{padding:32px var(--pad) 40px;text-align:center;background:var(--paper)}
-.ctaband__lead{font-family:var(--serif);font-size:14px;line-height:1.7;color:var(--ink2);margin-bottom:14px}
-.ctaband--tight{padding-top:20px}
-.ctaband--tight .ctaband__lead{margin-bottom:9px}
-.ctaband__list{margin:22px auto 0;max-width:400px;display:grid;grid-template-columns:1fr 1fr;
-  gap:11px 14px;text-align:left}
-.ctaband__list li{display:flex;align-items:center;gap:7px;font-family:var(--gothic);
-  font-size:12px;line-height:1.4;color:var(--body)}
-.ctaband__list li:last-child:nth-child(odd){grid-column:1 / -1;justify-content:center}
-.ctaband__ic{flex:0 0 18px;width:18px;height:18px;border-radius:50%;border:1.4px solid var(--teal);
-  display:flex;align-items:center;justify-content:center}
-.ctaband__ic svg{width:9px;height:9px;stroke:var(--teal);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
 /* ---- 画像セクション（完成画像をそのまま使用／CTAはHTMLで重ねる） ---- */
 .imgsec{position:relative;display:block;width:100%;line-height:0}
@@ -771,18 +758,9 @@ img,svg{min-width:0}
   <!-- ============ SECTION 1 : ヒーロー（完成画像） ============ -->
   <section class="imgsec" id="hero" style="background:#EBF0EA">
     <img src="assets/sections/section1-hero.png" alt="肩こり・腰痛が改善しないのは、年齢のせいではありません。40・50代からの不調に。整体×ピラティス renico" width="941" height="1672">
+    <a class="hero__ctabtn" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="原因を知る"><img class="ctabtn-img" src="assets/cta-button.png" alt=""></a>
   </section>
   <div class="seam" style="background:linear-gradient(to bottom, #EBF0EA, var(--paper))"></div>
-  <div class="ctaband ctaband--hero">
-    <a class="ctabtn-link" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="その理由を見る"><img class="ctabtn-img" src="assets/cta-button.png" alt=""></a>
-    <ul class="ctaband__list">
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>初回体験1,000円（税込）</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>更衣室・ウォーターサーバー完備</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>所要時間 約60分</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>無理な勧誘はありません</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>動きやすい服装でOK</li>
-    </ul>
-  </div>
 
   <!-- ============ SECTION 2 : あなたの悩み ============ -->
   <section class="section section--paper" id="worry">
@@ -864,6 +842,14 @@ img,svg{min-width:0}
   </section>
   <div class="seam" style="background:linear-gradient(to bottom, #E9E7E6, var(--paper))"></div>
 
+  <!-- ============ 途中CTA①（Section14を再利用） ============ -->
+  <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #EBF0F1)"></div>
+  <section class="imgsec" id="final-mid1" style="background:#F1F1ED">
+    <img src="assets/sections/section14-final.jpg" alt="これから先も、好きなことを楽しめる人生へ。身体が変わる。毎日が変わる。人生が変わる。" width="941" height="1672">
+    <a class="imgsec__ctapad" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ" style="top:64.7%;left:10.1%;width:78.6%;height:7.0%"><img src="assets/cta-button.png" alt=""></a>
+  </section>
+  <div class="seam" style="background:linear-gradient(to bottom, #EBF0F1, var(--paper))"></div>
+
   <!-- ============ SECTION 5 : SOLUTION（4分割画像で再構成） ============ -->
   <section class="section section--paper solution5" id="solution">
     <div class="solution5__block solution5__intro">
@@ -879,18 +865,6 @@ img,svg{min-width:0}
       <img src="assets/sections/section5-4-future.jpg" alt="未来への流れ：01整体→02整う→03ピラティス→04維持できる→05身体を気にしない毎日→06好きなことを楽しめる人生。今日より、もっと軽やかな明日へ。" width="1122" height="1402">
     </div>
   </section>
-
-  <div class="ctaband">
-    <p class="ctaband__lead">まずは、ご自身の身体を知ることから。</p>
-    <a class="ctabtn-link" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ"><img class="ctabtn-img" src="assets/cta-button.png" alt=""></a>
-    <ul class="ctaband__list">
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>初回体験1,000円（税込）</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>更衣室・ウォーターサーバー完備</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>所要時間 約60分</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>無理な勧誘はありません</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>動きやすい服装でOK</li>
-    </ul>
-  </div>
 
   <!-- ============ SECTION 6 : 改善プログラム ============ -->
   <section class="section section--paper" id="program">
@@ -1049,17 +1023,13 @@ img,svg{min-width:0}
     </div>
   </section>
 
-  <div class="ctaband ctaband--tight">
-    <p class="ctaband__lead">ここなら任せられそう。<br>そう感じていただけた方へ。</p>
-    <a class="ctabtn-link" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ"><img class="ctabtn-img" src="assets/cta-button.png" alt=""></a>
-    <ul class="ctaband__list">
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>初回体験1,000円（税込）</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>更衣室・ウォーターサーバー完備</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>所要時間 約60分</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>無理な勧誘はありません</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>動きやすい服装でOK</li>
-    </ul>
-  </div>
+  <!-- ============ 途中CTA②（Section14を再利用） ============ -->
+  <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #EBF0F1)"></div>
+  <section class="imgsec" id="final-mid2" style="background:#F1F1ED">
+    <img src="assets/sections/section14-final.jpg" alt="これから先も、好きなことを楽しめる人生へ。身体が変わる。毎日が変わる。人生が変わる。" width="941" height="1672">
+    <a class="imgsec__ctapad" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ" style="top:64.7%;left:10.1%;width:78.6%;height:7.0%"><img src="assets/cta-button.png" alt=""></a>
+  </section>
+  <div class="seam" style="background:linear-gradient(to bottom, #EBF0F1, var(--paper))"></div>
 
   <!-- ============ SECTION 10 : スタッフ紹介 ============ -->
   <section class="section section--paper" id="staff">
@@ -1140,17 +1110,13 @@ img,svg{min-width:0}
     <p class="trial__note">あなたの身体を変える第一歩は、<span class="em">自分の身体を知ること</span>から始まります。</p>
   </section>
 
-  <div class="ctaband">
-    <p class="ctaband__lead">まずはお気軽にご相談ください</p>
-    <a class="ctabtn-link" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="体験を予約する"><img class="ctabtn-img" src="assets/cta-button.png" alt=""></a>
-    <ul class="ctaband__list">
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>初回体験1,000円（税込）</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>更衣室・ウォーターサーバー完備</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>所要時間 約60分</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>無理な勧誘はありません</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>動きやすい服装でOK</li>
-    </ul>
-  </div>
+  <!-- ============ 途中CTA③（Section14を再利用） ============ -->
+  <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #EBF0F1)"></div>
+  <section class="imgsec" id="final-mid3" style="background:#F1F1ED">
+    <img src="assets/sections/section14-final.jpg" alt="これから先も、好きなことを楽しめる人生へ。身体が変わる。毎日が変わる。人生が変わる。" width="941" height="1672">
+    <a class="imgsec__ctapad" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ" style="top:64.7%;left:10.1%;width:78.6%;height:7.0%"><img src="assets/cta-button.png" alt=""></a>
+  </section>
+  <div class="seam" style="background:linear-gradient(to bottom, #EBF0F1, var(--paper))"></div>
 
   <!-- ============ SECTION 13 : FAQ（最後の不安をなくす） ============ -->
   <section class="section section--paper faq" id="faq">
@@ -1263,18 +1229,6 @@ img,svg{min-width:0}
       <p class="c2">一人で悩まず、まずはお気軽にご相談ください。</p>
     </div>
   </section>
-
-  <div class="ctaband">
-    <p class="ctaband__lead">不安がなくなった今が、<br>最初の一歩です。</p>
-    <a class="ctabtn-link" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ"><img class="ctabtn-img" src="assets/cta-button.png" alt=""></a>
-    <ul class="ctaband__list">
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>初回体験1,000円（税込）</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>更衣室・ウォーターサーバー完備</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>所要時間 約60分</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>無理な勧誘はありません</li>
-      <li><span class="ctaband__ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></span>動きやすい服装でOK</li>
-    </ul>
-  </div>
 
   <!-- ============ SECTION 14 : 最後のCTA（完成画像） ============ -->
   <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #EBF0F1)"></div>
