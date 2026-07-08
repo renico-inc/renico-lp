@@ -771,6 +771,22 @@ img,svg{min-width:0}
 .btn:hover{filter:brightness(1.05);box-shadow:0 14px 30px rgba(31,122,123,.4)}
 .btn:focus-visible{box-shadow:0 0 0 3px rgba(44,139,142,.35), 0 10px 22px rgba(31,122,123,.30)}
 .btn:active{transform:translateY(1px) scale(.99);filter:brightness(.97)}
+
+/* =========================================================
+   離脱防止ポップアップ（ブラウザ「戻る」操作で1回だけ表示）
+   ========================================================= */
+.exitpopup{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
+  padding:24px;background:rgba(20,17,12,.55);opacity:0;transition:opacity .25s ease}
+.exitpopup.is-open{display:flex}
+.exitpopup.is-visible{opacity:1}
+.exitpopup__card{position:relative;width:min(92vw,420px)}
+.exitpopup__card img{display:block;width:100%;height:auto;border-radius:22px}
+.exitpopup__close{position:absolute;top:1.5%;right:2.5%;width:14%;aspect-ratio:1/1;background:transparent;
+  border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+.exitpopup__cta{position:absolute;left:15%;right:12.5%;top:81.5%;height:7.2%;display:block;
+  -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.exitpopup__back{position:absolute;left:22%;right:22%;top:89.5%;height:7%;background:transparent;
+  border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0)}
 </style>
 </head>
 <body>
@@ -1257,6 +1273,16 @@ img,svg{min-width:0}
   </section>
 
 </main>
+
+<div class="exitpopup" id="exitPopup" role="dialog" aria-modal="true" aria-label="ちょっと待ってください">
+  <div class="exitpopup__card">
+    <img src="assets/sections/exit-popup.png" alt="ちょっと待ってください。その肩こり・腰痛、まだ諦めなくて大丈夫です。整体やマッサージに通っても、また戻ってしまう。その繰り返しには“身体の使い方”に理由があります。renicoでは、整体で整えて、ピラティスで戻りにくい身体へ。まずは、あなたの身体を知ることからはじめてみませんか？初回体験1,000円 元町駅徒歩3分・三宮駅徒歩5分 完全プライベート／無理な勧誘なし／朝7時予約可" width="1086" height="1448">
+    <button type="button" class="exitpopup__close" aria-label="閉じる"></button>
+    <a class="exitpopup__cta" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ"></a>
+    <button type="button" class="exitpopup__back" aria-label="ページに戻る"></button>
+  </div>
+</div>
+
 <script>
 document.querySelectorAll('.faqitem__q').forEach(function(btn){
   btn.addEventListener('click', function(){
@@ -1266,6 +1292,39 @@ document.querySelectorAll('.faqitem__q').forEach(function(btn){
     panel.classList.toggle('is-open', !expanded);
   });
 });
+
+(function(){
+  var STORAGE_KEY = 'renicoExitPopupShown';
+  var popup = document.getElementById('exitPopup');
+  if(!popup) return;
+
+  function openPopup(){
+    popup.classList.add('is-open');
+    requestAnimationFrame(function(){ popup.classList.add('is-visible'); });
+    try{ sessionStorage.setItem(STORAGE_KEY, '1'); }catch(e){}
+  }
+  function closePopup(){
+    popup.classList.remove('is-visible');
+    setTimeout(function(){ popup.classList.remove('is-open'); }, 250);
+  }
+
+  popup.querySelector('.exitpopup__close').addEventListener('click', closePopup);
+  popup.querySelector('.exitpopup__back').addEventListener('click', closePopup);
+  popup.addEventListener('click', function(e){ if(e.target === popup) closePopup(); });
+
+  var alreadyShown = false;
+  try{ alreadyShown = sessionStorage.getItem(STORAGE_KEY) === '1'; }catch(e){}
+
+  if(!alreadyShown){
+    history.pushState({renicoExitTrap:true}, '', location.href);
+    window.addEventListener('popstate', function onPop(){
+      window.removeEventListener('popstate', onPop);
+      var shown = false;
+      try{ shown = sessionStorage.getItem(STORAGE_KEY) === '1'; }catch(e){}
+      if(!shown) openPopup();
+    });
+  }
+})();
 </script>
 </body>
 </html>
