@@ -74,24 +74,40 @@ img,svg{min-width:0}
 
 .ico{stroke:var(--teal);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-/* ---- CTAボタン（LP全体で統一する画像ボタン） ---- */
+/* ---- CTAボタン（LP全体で統一する画像ボタン／幅はFAQ上ボタン＝コンテンツ幅に統一） ---- */
 .ctabtn-img{display:block;width:100%;height:auto}
-.hero__ctabtn{position:absolute;top:87%;left:12%;width:76%;display:block;-webkit-tap-highlight-color:rgba(0,0,0,0)}
-.imgsec__ctapad{position:absolute;display:flex;align-items:center;justify-content:center;
-  background:#FBF6F0;border-radius:999px;overflow:hidden;-webkit-tap-highlight-color:rgba(0,0,0,0)}
-.imgsec__ctapad img{display:block;width:auto;height:86%}
+.hero__ctabtn{position:absolute;top:86%;left:var(--pad);right:var(--pad);width:auto;display:block;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+.ctabtn-link{position:relative;display:block;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+.ctadesign-wrap{position:relative;display:block}
+.ctadesign-btn{position:absolute;top:79.5%;left:var(--pad);right:var(--pad);width:auto;display:block;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+
+/* ---- ボタンの上品な呼吸アニメーション ---- */
+@keyframes ctaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.015)}}
+.ctabtn-anim{animation:ctaPulse 2.8s ease-in-out infinite;transition:transform .18s ease,filter .18s ease}
+.ctabtn-anim:hover{animation-play-state:paused;transform:scale(1.015);filter:brightness(1.06)}
+.ctabtn-anim:active{animation-play-state:paused;transform:scale(.985);filter:brightness(.97)}
+@media (prefers-reduced-motion:reduce){.ctabtn-anim{animation:none}}
+
+/* ---- ボタン表面のキラリと光る演出（常時・控えめ） ---- */
+.ctabtn-shine{position:absolute;top:9.9%;bottom:12.1%;left:1.3%;right:1.9%;overflow:hidden;border-radius:999px;pointer-events:none}
+.ctabtn-shine::after{content:"";position:absolute;top:0;left:0;bottom:0;width:26%;
+  background:linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.5) 45%, rgba(255,255,255,.5) 55%, rgba(255,255,255,0) 100%);
+  transform:translateX(-160%) skewX(-18deg);
+  animation:ctaShine 3.6s ease-in-out infinite}
+@keyframes ctaShine{0%,15%{transform:translateX(-160%) skewX(-18deg)}55%,100%{transform:translateX(480%) skewX(-18deg)}}
+@media (prefers-reduced-motion:reduce){.ctabtn-shine::after{animation:none;display:none}}
 
 /* ---- 画像セクション（完成画像をそのまま使用／CTAはHTMLで重ねる） ---- */
 .imgsec{position:relative;display:block;width:100%;line-height:0}
 .imgsec img{display:block;width:100%;height:auto}
 .imgsec__link{position:absolute;display:block;-webkit-tap-highlight-color:rgba(0,0,0,0)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.seam{width:100%;height:28px}
+.seam{width:100%;height:18px}
 
 /* =========================================================
    SECTION 1  —  ヒーロー
    ========================================================= */
-.hero{position:relative;background:var(--cream);padding:26px var(--pad) 30px;overflow:hidden}
+.hero{position:relative;background:var(--cream);padding:26px var(--pad) 20px;overflow:hidden}
 .hero::before{content:"";position:absolute;top:-40px;left:-60px;width:200px;height:220px;
   background:radial-gradient(closest-side, rgba(120,180,180,.22), transparent);z-index:0}
 .hero::after{content:"";position:absolute;bottom:120px;left:-70px;width:200px;height:240px;
@@ -146,9 +162,9 @@ img,svg{min-width:0}
 .worry__grid .trio{grid-column:1 / -1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:4px}
 .wcard .ph{border-radius:16px;overflow:hidden;aspect-ratio:5/4;background:#eee;box-shadow:0 6px 16px rgba(80,70,50,.08)}
 .wcard .ph img{width:100%;height:100%;object-fit:cover}
-.wcard .cap{margin-top:11px;text-align:center;font-family:var(--gothic);font-size:13px;
-  line-height:1.6;color:var(--ink);font-weight:500}
-.worry__grid .trio .cap{font-size:12px}
+.wcard .cap{margin:11px -6px 0;text-align:center;font-family:var(--gothic);font-size:12px;
+  line-height:1.6;color:var(--ink);font-weight:500;min-height:39px}
+.worry__grid .trio .cap{font-size:11px;min-height:71px}
 
 .worry__close{margin-top:30px;text-align:center;font-family:var(--serif);font-size:20px;
   line-height:1.7;letter-spacing:.02em;color:var(--ink2)}
@@ -342,7 +358,7 @@ img,svg{min-width:0}
 /* =========================================================
    SECTION 6  —  改善プログラム STEP1-5
    ========================================================= */
-#program{position:relative;overflow:hidden;padding-top:32px}
+#program{position:relative;overflow:hidden;padding-top:22px}
 .eyebrow--jp{letter-spacing:.16em}
 .prog__top{position:relative;min-height:172px;margin-top:4px}
 .prog__h2{position:relative;z-index:2;width:60%;font-family:var(--serif);font-size:26px;font-weight:600;
@@ -472,7 +488,7 @@ img,svg{min-width:0}
 .commoncard li::before{content:"・";position:absolute;left:0;color:#C9A567}
 
 .voice__close{margin-top:26px;text-align:center;font-family:var(--serif);font-size:18.5px;color:var(--ink2)}
-#voice{padding-bottom:38px}
+#voice{padding-bottom:24px}
 
 /* =========================================================
    SECTION 9  —  だから、選ばれています。
@@ -513,7 +529,7 @@ img,svg{min-width:0}
 .phil__close{margin-top:24px;text-align:center;font-family:var(--serif);font-size:16px;line-height:1.8;color:var(--ink2)}
 
 /* SECTION 9 再構成（9-1〜9-5 画像を余白で連結） */
-.philosophy9{padding-top:38px;padding-bottom:38px}
+.philosophy9{padding-top:24px;padding-bottom:38px}
 .philosophy9 img{display:block;width:100%;height:auto}
 .philosophy9__reason{margin-top:25px}   /* 9-1 → 9-2 */
 .philosophy9__method{margin-top:25px}   /* 9-2 → 9-3（メインメッセージ前） */
@@ -525,19 +541,19 @@ img,svg{min-width:0}
    ========================================================= */
 .staff__sub{margin-top:14px;text-align:center;font-family:var(--gothic);font-size:14.5px;line-height:1.9;letter-spacing:.02em;color:var(--body)}
 
-#staff{position:relative;overflow:hidden;padding-bottom:28px}
-.staffcard{margin-top:14px;display:flex;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 20px rgba(80,70,50,.06);
-  min-height:clamp(280px, 569.5px - 63.5vw, 400px)}
+#staff{position:relative;overflow:hidden;padding-bottom:18px}
+.staffcard{margin-top:10px;display:flex;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 20px rgba(80,70,50,.06);
+  min-height:clamp(168px, 341.7px - 38.1vw, 240px)}
 .staffcard--r{flex-direction:row-reverse}
 .staffcard__ph{flex:0 0 33%;background:#eee;align-self:stretch}
-.staffcard__ph img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}
-.staffcard__body{flex:1;min-width:0;padding:14px 16px}
-.staffcard__name{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink2);letter-spacing:.04em}
-.staffcard__catch{margin-top:4px;font-family:var(--serif);font-size:12.5px;font-weight:600;line-height:1.5;color:var(--teal)}
-.staffcard__rule{width:100%;height:1px;background:var(--line);margin:8px 0}
-.staffcard__text{font-family:var(--gothic);font-size:11px;line-height:1.55;color:var(--body)}
-.staffcard__like{display:inline-flex;align-items:center;gap:5px;margin-top:8px;background:var(--teal-soft);
-  color:var(--teal);border-radius:999px;padding:4px 10px;font-family:var(--gothic);font-size:9.5px;font-weight:600;white-space:nowrap;max-width:100%}
+.staffcard__ph img{width:100%;height:100%;object-fit:cover;object-position:center 26%;display:block}
+.staffcard__body{flex:1;min-width:0;padding:10px 13px}
+.staffcard__name{font-family:var(--serif);font-size:14.5px;font-weight:600;color:var(--ink2);letter-spacing:.04em}
+.staffcard__catch{margin-top:3px;font-family:var(--serif);font-size:11.5px;font-weight:600;line-height:1.4;color:var(--teal)}
+.staffcard__rule{width:100%;height:1px;background:var(--line);margin:6px 0}
+.staffcard__text{font-family:var(--gothic);font-size:10.5px;line-height:1.45;color:var(--body)}
+.staffcard__like{display:inline-flex;align-items:center;gap:5px;margin-top:6px;background:var(--teal-soft);
+  color:var(--teal);border-radius:999px;padding:3px 9px;font-family:var(--gothic);font-size:9px;font-weight:600;white-space:nowrap;max-width:100%}
 .staffcard__like svg{width:11px;height:11px}
 
 .staff__group{margin-top:26px;border-radius:20px;overflow:hidden;position:relative}
@@ -603,6 +619,8 @@ img,svg{min-width:0}
 /* =========================================================
    SECTION 12  —  初回体験・安心ガイド
    ========================================================= */
+.trial__h2{font-size:21px}
+.trial__h2 .trial__em{color:var(--teal);font-size:27px}
 .trial__sub{margin-top:14px;text-align:center;font-family:var(--gothic);font-size:14.5px;line-height:1.9;letter-spacing:.02em;color:var(--body)}
 
 .trial__grid{margin-top:26px;display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:10px}
@@ -610,8 +628,10 @@ img,svg{min-width:0}
 .trial__grid .sm{border-radius:12px;overflow:hidden;aspect-ratio:250/216}
 .trial__grid img{width:100%;height:100%;object-fit:cover;display:block}
 .trial__grid .big img{height:100%}
+.trial-recept-img{object-position:74% center}
+.trial-bed-img{object-position:62% center}
 
-#trial{padding-bottom:24px;padding-top:28px}
+#trial{padding-bottom:16px;padding-top:20px}
 .trial__infoimg{margin-top:32px}
 .trial__infoimg img{display:block;width:100%;height:auto}
 
@@ -649,6 +669,7 @@ img,svg{min-width:0}
 .trial__quote .q2 .em{color:var(--teal);font-weight:600}
 .trial__note{margin-top:18px;text-align:center;font-family:var(--gothic);font-size:12.5px;line-height:1.8;color:var(--body)}
 .trial__note .em{color:var(--teal);font-weight:600}
+.trial__ctabtn{margin-top:28px}
 
 /* =========================================================
    共通装飾  —  水彩・葉っぱ・きらめき
@@ -661,7 +682,7 @@ img,svg{min-width:0}
 /* =========================================================
    SECTION 13  —  FAQ（最後の不安をなくすセクション）
    ========================================================= */
-.faq{position:relative;overflow:hidden}
+.faq{position:relative;overflow:hidden;padding-top:36px;padding-bottom:36px}
 .faq__sub{margin-top:14px;text-align:center;font-family:var(--gothic);font-size:14.5px;line-height:1.9;letter-spacing:.02em;color:var(--body)}
 
 .faqlist{position:relative;z-index:2;margin-top:30px;display:flex;flex-direction:column;gap:18px}
@@ -757,8 +778,8 @@ img,svg{min-width:0}
 
   <!-- ============ SECTION 1 : ヒーロー（完成画像） ============ -->
   <section class="imgsec" id="hero" style="background:#EBF0EA">
-    <img src="assets/sections/section1-hero.png" alt="肩こり・腰痛が改善しないのは、年齢のせいではありません。40・50代からの不調に。整体×ピラティス renico" width="941" height="1672">
-    <a class="hero__ctabtn" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="原因を知る"><img class="ctabtn-img" src="assets/cta-button.png" alt=""></a>
+    <img src="assets/sections/section1-hero.png" alt="身体の痛みが改善しないことを、諦める必要はありません。30代以降の身体の不調に。整体×ピラティス renico" width="941" height="1672">
+    <a class="hero__ctabtn ctabtn-anim" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="原因を知る"><img class="ctabtn-img" src="assets/cta-button-only.png" alt=""><span class="ctabtn-shine" aria-hidden="true"></span></a>
   </section>
   <div class="seam" style="background:linear-gradient(to bottom, #EBF0EA, var(--paper))"></div>
 
@@ -783,20 +804,20 @@ img,svg{min-width:0}
       </div>
       <div class="wcard">
         <div class="ph"><img src="assets/worry-02.jpg" alt="仕事中に肩や腰が気になる女性"></div>
-        <p class="cap">仕事中も肩や腰が気になる</p>
+        <p class="cap">仕事中も肩や腰が<br>気になる</p>
       </div>
       <div class="trio">
         <div class="wcard">
           <div class="ph"><img src="assets/worry-03.jpg" alt="休日につい横になってしまう女性"></div>
-          <p class="cap">休日は出かけたいのに、<br>つい横になってしまう</p>
+          <p class="cap">休日は<br>出かけたいのに、<br>つい横に<br>なってしまう</p>
         </div>
         <div class="wcard">
           <div class="ph"><img src="assets/worry-04.jpg" alt="マッサージを受ける女性"></div>
-          <p class="cap">マッサージに通っても、<br>また戻ってしまう</p>
+          <p class="cap">マッサージに<br>通っても、<br>また戻ってしまう</p>
         </div>
         <div class="wcard">
           <div class="ph"><img src="assets/worry-05.jpg" alt="スマホを見て悩む女性"></div>
-          <p class="cap">もう年齢だから<br>仕方ないと思っている</p>
+          <p class="cap">もう年齢だから<br>仕方ないと<br>思っている</p>
         </div>
       </div>
     </div>
@@ -857,6 +878,16 @@ img,svg{min-width:0}
       <img src="assets/sections/section5-4-future.jpg" alt="未来への流れ：01整体→02整う→03ピラティス→04維持できる→05身体を気にしない毎日→06好きなことを楽しめる人生。今日より、もっと軽やかな明日へ。" width="1122" height="1402">
     </div>
   </section>
+
+  <!-- ============ 途中CTA（CTAデザイン） ============ -->
+  <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #F7F2EC)"></div>
+  <section class="imgsec" id="cta-s5" style="background:#F7F2EC">
+    <div class="ctadesign-wrap">
+      <img src="assets/sections/cta-design.png" alt="最後の一歩は、もっと軽やかでいい。身体が変わる。毎日が変わる。人生が変わる。初めての方へ 体験60分 特別価格1,000円（税込） 完全予約制・プライベート空間 無理な勧誘はありません 元町駅徒歩3分、三宮駅徒歩5分 受付時間7:00〜21:00 公式LINEから簡単予約">
+      <a class="ctadesign-btn ctabtn-anim" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ"><img class="ctabtn-img" src="assets/cta-button-only.png" alt=""><span class="ctabtn-shine" aria-hidden="true"></span></a>
+    </div>
+  </section>
+  <div class="seam" style="background:linear-gradient(to bottom, #F7F2EC, var(--paper))"></div>
 
   <!-- ============ SECTION 6 : 改善プログラム ============ -->
   <section class="section section--paper" id="program">
@@ -932,19 +963,11 @@ img,svg{min-width:0}
       <p class="goal__line">生活<small>が</small>変わる。</p>
       <p class="goal__ar">▼</p>
       <p class="goal__line">人生<small>が</small>変わる。</p>
-      <p class="goal__sub">私たちのゴールは、肩こりを改善することではありません。これから先も好きなことを楽しめる身体を、一緒につくることです。</p>
+      <p class="goal__sub">私たちのゴールは、身体の痛みを改善することではありません。これから先も好きなことを楽しめる身体を、一緒につくることです。</p>
     </div>
 
     <p class="prog__ribbon">あなたの「なりたい未来」に寄り添い、<br>二人三脚でサポートしていきます。</p>
   </section>
-
-  <!-- ============ 途中CTA①（Section14を再利用） ============ -->
-  <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #EBF0F1)"></div>
-  <section class="imgsec" id="final-mid1" style="background:#F1F1ED">
-    <img src="assets/sections/section14-final.jpg" alt="これから先も、好きなことを楽しめる人生へ。身体が変わる。毎日が変わる。人生が変わる。" width="941" height="1672">
-    <a class="imgsec__ctapad" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ" style="top:64.7%;left:10.1%;width:78.6%;height:7.0%"><img src="assets/cta-button.png" alt=""></a>
-  </section>
-  <div class="seam" style="background:linear-gradient(to bottom, #EBF0F1, #F7F7F3)"></div>
 
   <!-- ============ SECTION 7 : Story of Change ============ -->
   <!-- ============ SECTION 7 : Story of Change（完成画像） ============ -->
@@ -1016,10 +1039,10 @@ img,svg{min-width:0}
       <img src="assets/sections/section9-3-method.jpg" alt="02 整体×ピラティスという独自メソッド。整えるだけでは終わらない。戻りにくい身体を目指します。整体で身体を整え、ピラティスで整った身体を維持する。改善の順番まで考えた、renico独自の『ピラ体』メソッドです。" width="1448" height="1086">
     </div>
     <div class="philosophy9__block philosophy9__goal">
-      <img src="assets/sections/section9-4-goal.png" alt="03 身体ではなく、人生をゴールに。私たちが本当に叶えたいのは、肩こり改善ではありません。趣味を楽しむ。仕事を頑張れる。家族と笑顔で過ごす。そんな毎日を取り戻すこと。それが、私たちの目指すゴールです。" width="1448" height="1086">
+      <img src="assets/sections/section9-4-goal.png" alt="03 身体ではなく、人生をゴールに。私たちが本当に叶えたいのは、身体の痛み改善ではありません。趣味を楽しむ。仕事を頑張れる。家族と笑顔で過ごす。そんな毎日を取り戻すこと。それが、私たちの目指すゴールです。" width="1448" height="1086">
     </div>
     <div class="philosophy9__block philosophy9__promise">
-      <img src="assets/sections/section9-5-promise.jpg" alt="私たちがお約束すること：あなたの身体だけを見ません。あなたの日常まで一緒に考えます。あなたの人生がもっと楽しくなるよう伴走します。あなたの人生の可能性を広げるパートナーでありたい。" width="1448" height="1086">
+      <img src="assets/sections/section9-5-promise.png" alt="私たちがお約束すること：あなたの身体だけを見ません。あなたの日常まで一緒に考えます。あなたの人生がもっと楽しくなるよう伴走します。あなたの人生の可能性を広げるパートナーでありたい。" width="1448" height="1086">
     </div>
   </section>
 
@@ -1036,7 +1059,7 @@ img,svg{min-width:0}
         <p class="staffcard__name">方山 拳剛</p>
         <p class="staffcard__catch">「感動レベルの施術と体験を」<br>心を込めてお届け</p>
         <div class="staffcard__rule"></div>
-        <p class="staffcard__text">18歳で友人を亡くし、人生について深く考えるようになりました。<br><br>人生を楽しむためには、まず身体が健康であることが大切だと考えています。<br><br>痛みを繰り返させない身体づくりを通して、お客様が「人生を楽しめる」よう全力でサポートいたします。</p>
+        <p class="staffcard__text">身体が健康であることの大切さを胸に、痛みを繰り返させない身体づくりで、あなたが「人生を楽しめる」毎日を全力でサポートします。</p>
         <span class="staffcard__like"><svg viewBox="0 0 24 24" fill="var(--teal)" stroke="none"><path d="M12 21s-7-4.5-9.5-9C.7 8.3 2.3 5 5.5 5c1.9 0 3.3 1 4.5 2.5C11.2 6 12.6 5 14.5 5 17.7 5 19.3 8.3 21.5 12 19 16.5 12 21 12 21z"/></svg>好きなこと：旅行・スノーボード</span>
       </div>
     </div>
@@ -1047,7 +1070,7 @@ img,svg{min-width:0}
         <p class="staffcard__name">胡摩崎 芹奈</p>
         <p class="staffcard__catch">心からお客様に寄り添います。</p>
         <div class="staffcard__rule"></div>
-        <p class="staffcard__text">困っている人を一人でも多く助けたい。<br><br>その想いで毎日お客様と向き合っています。<br><br>あなたのお悩みに全力で寄り添い、一緒に改善を目指します。ぜひ安心してお任せください。</p>
+        <p class="staffcard__text">困っている方を一人でも多く助けたい。その想いで、あなたのお悩みに全力で寄り添います。安心してお任せください。</p>
         <span class="staffcard__like"><svg viewBox="0 0 24 24" fill="var(--teal)" stroke="none"><path d="M12 21s-7-4.5-9.5-9C.7 8.3 2.3 5 5.5 5c1.9 0 3.3 1 4.5 2.5C11.2 6 12.6 5 14.5 5 17.7 5 19.3 8.3 21.5 12 19 16.5 12 21 12 21z"/></svg>好きなこと：ファッション・旅行</span>
       </div>
     </div>
@@ -1058,7 +1081,7 @@ img,svg{min-width:0}
         <p class="staffcard__name">向井 春佳</p>
         <p class="staffcard__catch">整体×ピラティスで快適な毎日に♪</p>
         <div class="staffcard__rule"></div>
-        <p class="staffcard__text">美味しいものを食べたい。でも綺麗な身体も手に入れたい。<br><br>そんな少し欲張りな想いを大切にしています。<br><br>整体×ピラティスを通して、毎日をもっと楽しく過ごせる身体づくりをサポートします。</p>
+        <p class="staffcard__text">美味しいものも楽しみたい、でも綺麗な身体も諦めたくない。そんな想いに寄り添い、毎日をもっと楽しく過ごせる身体づくりをサポートします。</p>
         <span class="staffcard__like"><svg viewBox="0 0 24 24" fill="var(--teal)" stroke="none"><path d="M12 21s-7-4.5-9.5-9C.7 8.3 2.3 5 5.5 5c1.9 0 3.3 1 4.5 2.5C11.2 6 12.6 5 14.5 5 17.7 5 19.3 8.3 21.5 12 19 16.5 12 21 12 21z"/></svg>好きなこと：ダイビング・ラーメン</span>
       </div>
     </div>
@@ -1071,13 +1094,12 @@ img,svg{min-width:0}
     <p class="staff__ribbon">あなたの人生の可能性を、<br>一緒に広げていきませんか？</p>
   </section>
 
-  <!-- ============ 途中CTA②（Section14を再利用） ============ -->
-  <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #EBF0F1)"></div>
-  <section class="imgsec" id="final-mid2" style="background:#F1F1ED">
-    <img src="assets/sections/section14-final.jpg" alt="これから先も、好きなことを楽しめる人生へ。身体が変わる。毎日が変わる。人生が変わる。" width="941" height="1672">
-    <a class="imgsec__ctapad" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ" style="top:64.7%;left:10.1%;width:78.6%;height:7.0%"><img src="assets/cta-button.png" alt=""></a>
+  <!-- ============ デザイン補足（renicoの空間紹介） ============ -->
+  <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #FAF8F7)"></div>
+  <section class="imgsec" id="space" style="background:#FAF8F7">
+    <img src="assets/sections/section10-5-space.png" alt="SPACE 空間も、身体を整える一部です。完全プライベート空間・やわらかな光と静けさ・清潔で心地よい環境。身体を整える時間が、少し楽しみになる場所でありたい。" width="1051" height="1497">
   </section>
-  <div class="seam" style="background:linear-gradient(to bottom, #EBF0F1, var(--paper))"></div>
+  <div class="seam" style="background:linear-gradient(to bottom, #FAF8F7, var(--paper))"></div>
 
   <!-- ============ SECTION 11 : 代表メッセージ（完成画像） ============ -->
   <!-- Section11はLP上では非表示（管理番号として維持、Section10→Section12の流れを採用） -->
@@ -1088,19 +1110,19 @@ img,svg{min-width:0}
   <!-- ============ SECTION 12 : 初回体験・安心ガイド ============ -->
   <section class="section section--paper" id="trial">
     <p class="eyebrow">TRIAL GUIDE</p>
-    <h2 class="h2">まずは、あなたの<br>身体を知ることから。</h2>
+    <h2 class="h2 trial__h2">まずは、あなたの<br><span class="trial__em">身体を知る</span>ことから。</h2>
     <p class="trial__sub">無理な勧誘はありません。<br>初めての方でも安心して体験いただけるよう、<br>一人ひとりに合わせて丁寧にご案内します。</p>
 
     <div class="trial__grid">
-      <div class="big"><img src="assets/trial-recept.jpg" alt="renico受付スペース"></div>
+      <div class="big"><img class="trial-recept-img" src="assets/trial-recept.jpg" alt="renico受付スペース"></div>
       <div class="sm"><img src="assets/trial-counsel.jpg" alt="カウンセリングの様子"></div>
       <div class="sm"><img src="assets/trial-pilates.jpg" alt="ピラティス指導の様子"></div>
-      <div class="sm"><img src="assets/trial-bed.jpg" alt="施術ベッド"></div>
-      <div class="sm"><img src="assets/trial-smile.jpg" alt="笑顔のお客様"></div>
+      <div class="sm"><img class="trial-bed-img" src="assets/trial-bed.jpg" alt="施術ベッド"></div>
+      <div class="sm"><img src="assets/trial-smile.jpg" alt="整体施術の様子"></div>
     </div>
 
     <div class="trial__infoimg">
-      <img src="assets/sections/section12-infocards.jpg" alt="INFORMATION CARD 1 体験料金 初回体験1,000円（税込）まずは、今のお身体の状態を知るところから始めましょう。INFORMATION CARD 2 所要時間 約60分 カウンセリング・姿勢分析・整体・ピラティス・ビフォーアフター確認 通常の施術と同じ流れで体験いただけます。INFORMATION CARD 3 持ち物 特に必要ありません。ウォーターサーバーも完備しております。お気軽にお越しください。INFORMATION CARD 4 服装 動きやすい服装であればどんな服装でも大丈夫です。更衣室もございますので、お仕事帰りでも安心してご来店いただけます。INFORMATION CARD 5 ご安心ください 無理な勧誘はありません・一人ひとりのお悩みに合わせてご案内します・初めての方も安心して体験いただけます 初回体験で分かること：なぜ今まで改善しなかったのか・あなたの身体のクセ・痛めの本当の原因・あなたに合った改善方法" width="846" height="875">
+      <img src="assets/sections/section12-infocards.png" alt="体験料金 初回体験1,000円（税込）。所要時間 約60分 通常の施術と同じ流れで体験いただけます。持ち物 特に必要ありません。ウォーターサーバーも完備しています。服装 動きやすい服装であればOK！更衣室もございますので、お仕事帰りでも安心です。ご安心ください：無理な勧誘はありません・一人ひとりのお悩みに合わせてご案内します・初めての方も安心して体験いただけます。初回体験で分かること：なぜ今まで改善しなかったのか・あなたの身体のクセ・痛みの本当の原因・あなたに合った改善方法" width="1086" height="1448">
     </div>
 
     <div class="trial__quote">
@@ -1108,15 +1130,10 @@ img,svg{min-width:0}
       <p class="q2">まずは、一度<span class="em">体験</span>してみてください。</p>
     </div>
     <p class="trial__note">あなたの身体を変える第一歩は、<span class="em">自分の身体を知ること</span>から始まります。</p>
+    <div class="trial__ctabtn">
+      <a class="ctabtn-link ctabtn-anim" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ"><img class="ctabtn-img" src="assets/cta-button-only.png" alt=""><span class="ctabtn-shine" aria-hidden="true"></span></a>
+    </div>
   </section>
-
-  <!-- ============ 途中CTA③（Section14を再利用） ============ -->
-  <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #EBF0F1)"></div>
-  <section class="imgsec" id="final-mid3" style="background:#F1F1ED">
-    <img src="assets/sections/section14-final.jpg" alt="これから先も、好きなことを楽しめる人生へ。身体が変わる。毎日が変わる。人生が変わる。" width="941" height="1672">
-    <a class="imgsec__ctapad" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ" style="top:64.7%;left:10.1%;width:78.6%;height:7.0%"><img src="assets/cta-button.png" alt=""></a>
-  </section>
-  <div class="seam" style="background:linear-gradient(to bottom, #EBF0F1, var(--paper))"></div>
 
   <!-- ============ SECTION 13 : FAQ（最後の不安をなくす） ============ -->
   <section class="section section--paper faq" id="faq">
@@ -1136,7 +1153,7 @@ img,svg{min-width:0}
         </button>
         <div class="faqitem__awrap" id="faq-a-1" role="region" aria-labelledby="faq-q-1">
           <div class="faqitem__ainner">
-            <p class="faqitem__a">もちろん個人差はありますが、私たちは「肩こりを治すこと」ではなく、改善しやすい身体づくりを大切にしています。今まで整体やマッサージで改善しなかった方にも、多くご来店いただいています。まずは今のお身体の状態を一緒に確認しましょう。</p>
+            <p class="faqitem__a">もちろん個人差はありますが、私たちは「身体の痛みを治すこと」ではなく、改善しやすい身体づくりを大切にしています。今まで整体やマッサージで改善しなかった方にも、多くご来店いただいています。まずは今のお身体の状態を一緒に確認しましょう。</p>
           </div>
         </div>
       </div>
@@ -1230,11 +1247,13 @@ img,svg{min-width:0}
     </div>
   </section>
 
-  <!-- ============ SECTION 14 : 最後のCTA（完成画像） ============ -->
-  <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #EBF0F1)"></div>
-  <section class="imgsec" id="final" style="background:#F1F1ED">
-    <img src="assets/sections/section14-final.jpg" alt="これから先も、好きなことを楽しめる人生へ。身体が変わる。毎日が変わる。人生が変わる。" width="941" height="1672">
-    <a class="imgsec__ctapad" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ" style="top:64.7%;left:10.1%;width:78.6%;height:7.0%"><img src="assets/cta-button.png" alt=""></a>
+  <!-- ============ SECTION 14 : 最後のCTA（CTAデザイン） ============ -->
+  <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #F7F2EC)"></div>
+  <section class="imgsec" id="final" style="background:#F7F2EC">
+    <div class="ctadesign-wrap">
+      <img src="assets/sections/cta-design.png" alt="最後の一歩は、もっと軽やかでいい。身体が変わる。毎日が変わる。人生が変わる。初めての方へ 体験60分 特別価格1,000円（税込） 完全予約制・プライベート空間 無理な勧誘はありません 元町駅徒歩3分、三宮駅徒歩5分 受付時間7:00〜21:00 公式LINEから簡単予約">
+      <a class="ctadesign-btn ctabtn-anim" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=SSzlN5" aria-label="まずは身体を知る体験へ"><img class="ctabtn-img" src="assets/cta-button-only.png" alt=""><span class="ctabtn-shine" aria-hidden="true"></span></a>
+    </div>
   </section>
 
 </main>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f7f4ee">
+<title>renico｜Typography System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ===== FONT TOKENS ===== */
+  --font-serif:"Shippori Mincho","Noto Serif JP",serif;      /* 見出し・ボタン */
+  --font-sans:"Noto Sans JP",sans-serif;                     /* 本文・サブ・キャプション */
+  --font-en:"Jost","Noto Sans JP",sans-serif;                /* 英字アイブロウ */
+
+  /* ===== COLOR TOKENS ===== */
+  --ink:#2E2A26;      /* 見出し（暖かみのある黒） */
+  --body:#55504A;     /* 本文 */
+  --muted:#8A857E;    /* キャプション */
+  --teal:#2C8B8E;     /* アクセント／アイブロウ／キーワード */
+  --teal-deep:#1F7A7D;/* ボタン */
+  --gold:#B99B6B;     /* 植物装飾専用（文字には使わない） */
+  --cream:#F7F4EE;    /* 背景 */
+  --card:#FFFFFF;
+  --line:#DED8CE;
+
+  /* ===== TYPE SCALE (px) ===== */
+  --fs-eyebrow:12px;  --lh-eyebrow:1.2;  --ls-eyebrow:.24em;  --w-eyebrow:400;
+  --fs-title:27px;    --lh-title:1.55;   --ls-title:.04em;    --w-title:600;
+  --fs-sub:15px;      --lh-sub:1.9;      --ls-sub:.04em;      --w-sub:400;
+  --fs-body:14.5px;   --lh-body:2.0;     --ls-body:.03em;     --w-body:400;
+  --fs-cardt:17px;    --lh-cardt:1.6;    --ls-cardt:.03em;    --w-cardt:600;
+  --fs-cap:11.5px;    --lh-cap:1.7;      --ls-cap:.06em;      --w-cap:500;
+  --fs-btn:17px;      --lh-btn:1;        --ls-btn:.12em;      --w-btn:600;
+
+  /* ===== SPACING RULES ===== */
+  --gap-eyebrow-title:14px;
+  --gap-title-sub:18px;
+  --gap-sub-body:16px;
+  --gap-title-body:20px;
+  --gap-block:16px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#e9e5dd;-webkit-text-size-adjust:100%}
+body{display:flex;justify-content:center;font-family:var(--font-sans);color:var(--body)}
+.wrap{width:100%;max-width:480px;background:var(--cream);box-shadow:0 0 40px rgba(0,0,0,.12);overflow:hidden}
+
+/* ---------- doc header ---------- */
+.doc-head{padding:44px 28px 34px;text-align:center;background:linear-gradient(180deg,#fff,var(--cream))}
+.doc-head .logo{font-family:var(--font-serif);font-size:26px;font-weight:600;letter-spacing:.06em;color:var(--ink)}
+.doc-head .logo small{font-family:var(--font-sans);font-size:11px;letter-spacing:.3em;color:var(--teal);display:block;margin-top:8px;font-weight:500}
+.doc-head .sysname{font-family:var(--font-en);font-size:12px;letter-spacing:.34em;color:var(--muted);margin-top:22px;text-transform:uppercase}
+
+/* ---------- section shell ---------- */
+.block{padding:38px 28px}
+.block+.block{border-top:1px solid var(--line)}
+.kicker{font-family:var(--font-en);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:22px}
+
+/* ===== THE UNIFIED EYEBROW COMPONENT ===== */
+.eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;
+  font-family:var(--font-en);font-size:var(--fs-eyebrow);font-weight:var(--w-eyebrow);
+  letter-spacing:var(--ls-eyebrow);line-height:var(--lh-eyebrow);color:var(--teal);
+  text-transform:uppercase;margin-bottom:var(--gap-eyebrow-title)}
+.eyebrow::before,.eyebrow::after{content:"";width:26px;height:1px;background:var(--teal);opacity:.55}
+
+/* ===== TEXT ROLES ===== */
+.title{font-family:var(--font-serif);font-size:var(--fs-title);font-weight:var(--w-title);
+  line-height:var(--lh-title);letter-spacing:var(--ls-title);color:var(--ink);text-align:center}
+.title .em{color:var(--teal)}
+.subtitle{font-family:var(--font-sans);font-size:var(--fs-sub);font-weight:var(--w-sub);
+  line-height:var(--lh-sub);letter-spacing:var(--ls-sub);color:var(--body);text-align:center;margin-top:var(--gap-title-sub)}
+.body{font-family:var(--font-sans);font-size:var(--fs-body);font-weight:var(--w-body);
+  line-height:var(--lh-body);letter-spacing:var(--ls-body);color:var(--body)}
+.card-title{font-family:var(--font-serif);font-size:var(--fs-cardt);font-weight:var(--w-cardt);
+  line-height:var(--lh-cardt);letter-spacing:var(--ls-cardt);color:var(--ink)}
+.caption{font-family:var(--font-sans);font-size:var(--fs-cap);font-weight:var(--w-cap);
+  line-height:var(--lh-cap);letter-spacing:var(--ls-cap);color:var(--muted)}
+.btn{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;
+  padding:20px;border-radius:44px;background:var(--teal-deep);
+  font-family:var(--font-serif);font-size:var(--fs-btn);font-weight:var(--w-btn);
+  letter-spacing:var(--ls-btn);line-height:var(--lh-btn);color:#fff}
+.btn .chev{width:22px;height:22px;border-radius:50%;border:1.4px solid rgba(255,255,255,.9);
+  display:flex;align-items:center;justify-content:center;font-family:var(--font-sans);font-size:12px;font-weight:400}
+
+/* ---------- specimen rows ---------- */
+.spec{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:20px;margin-top:16px}
+.spec .meta{font-family:var(--font-en);font-size:10.5px;letter-spacing:.14em;color:var(--muted);
+  text-transform:uppercase;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:6px 14px}
+.spec .meta b{color:var(--teal);font-weight:500}
+.spec .sample{border-top:1px dashed var(--line);padding-top:16px}
+
+/* ---------- token swatches ---------- */
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.sw{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.sw .chip{height:52px}
+.sw .lbl{padding:8px 10px;font-family:var(--font-en);font-size:10px;letter-spacing:.08em;color:var(--body)}
+.sw .lbl b{display:block;color:var(--ink);font-size:11px;letter-spacing:.1em}
+
+/* ---------- label table ---------- */
+.lbltable{margin-top:16px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.lbltable .row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;padding:11px 14px;font-size:12px}
+.lbltable .row+.row{border-top:1px solid var(--line)}
+.lbltable .before{color:var(--muted);text-decoration:line-through;font-family:var(--font-sans)}
+.lbltable .arrow{color:var(--teal);font-size:11px}
+.lbltable .after{font-family:var(--font-en);letter-spacing:.14em;color:var(--teal);text-transform:uppercase;text-align:right;font-weight:500}
+.lbltable .fix{color:#c26a3a}
+.lbltable .head{background:var(--cream);font-family:var(--font-en);font-size:10px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+
+/* ---------- spacing diagram ---------- */
+.rule{display:flex;align-items:center;gap:12px;padding:9px 0;font-size:12px;color:var(--body);font-family:var(--font-sans)}
+.rule .val{font-family:var(--font-en);color:var(--teal);letter-spacing:.08em;min-width:52px}
+.rule .bar{height:1px;flex:1;background:linear-gradient(90deg,var(--teal),transparent)}
+
+/* ---------- composed demo ---------- */
+.demo{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 22px;margin-top:16px}
+.demo .stack>*+.subtitle{margin-top:var(--gap-title-sub)}
+.demo .body+.body{margin-top:var(--gap-block)}
+.demo .title+.body{margin-top:var(--gap-title-body)}
+.demo .subtitle+.body{margin-top:var(--gap-sub-body)}
+.demo .btnwrap{margin-top:26px}
+.note{font-family:var(--font-sans);font-size:11px;color:var(--muted);text-align:center;margin-top:10px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="doc-head">
+    <div class="logo">renico<small>整体 × ピラティス</small></div>
+    <div class="sysname">Typography Design System</div>
+  </header>
+
+  <!-- 1. FONT + COLOR TOKENS -->
+  <section class="block">
+    <div class="eyebrow">Foundation</div>
+    <h2 class="title">土台となる<span class="em">トークン</span></h2>
+
+    <div class="spec">
+      <div class="meta"><span>SERIF ／ 見出し・ボタン</span></div>
+      <div class="sample" style="font-family:var(--font-serif);font-size:22px;color:var(--ink);font-weight:600;letter-spacing:.04em">身体を整えることは、人生を前向きにすること。</div>
+    </div>
+    <div class="spec">
+      <div class="meta"><span>SANS ／ 本文・ラベル</span></div>
+      <div class="sample" style="font-family:var(--font-sans);font-size:15px;color:var(--body);line-height:1.9;letter-spacing:.03em">整体で身体を整え、ピラティスで整った身体を維持する。改善の順番まで考えた独自メソッドです。</div>
+    </div>
+    <div class="spec">
+      <div class="meta"><span>EN ／ 英字アイブロウ</span></div>
+      <div class="sample" style="font-family:var(--font-en);font-size:15px;color:var(--teal);letter-spacing:.28em">OUR PHILOSOPHY</div>
+    </div>
+
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:var(--ink)"></div><div class="lbl"><b>INK</b>#2E2A26</div></div>
+      <div class="sw"><div class="chip" style="background:var(--body)"></div><div class="lbl"><b>BODY</b>#55504A</div></div>
+      <div class="sw"><div class="chip" style="background:var(--muted)"></div><div class="lbl"><b>MUTED</b>#8A857E</div></div>
+      <div class="sw"><div class="chip" style="background:var(--teal)"></div><div class="lbl"><b>TEAL</b>#2C8B8E</div></div>
+      <div class="sw"><div class="chip" style="background:var(--teal-deep)"></div><div class="lbl"><b>DEEP</b>#1F7A7D</div></div>
+      <div class="sw"><div class="chip" style="background:var(--gold)"></div><div class="lbl"><b>GOLD</b>装飾専用</div></div>
+    </div>
+  </section>
+
+  <!-- 2. TYPE SCALE / ROLES -->
+  <section class="block">
+    <div class="eyebrow">Type Scale</div>
+    <h2 class="title">7つの<span class="em">文字ロール</span></h2>
+
+    <div class="spec">
+      <div class="meta"><b>EYEBROW</b><span>12 / w400 / LS .24em / EN Caps</span></div>
+      <div class="sample"><div class="eyebrow" style="margin-bottom:0">SOLUTION</div></div>
+    </div>
+    <div class="spec">
+      <div class="meta"><b>SECTION TITLE</b><span>27 / w600 / LH 1.55 / LS .04em / Serif</span></div>
+      <div class="sample"><div class="title" style="text-align:left">肩こりがない身体では<br>ありません。</div></div>
+    </div>
+    <div class="spec">
+      <div class="meta"><b>SUBTITLE</b><span>15 / w400 / LH 1.9 / LS .04em</span></div>
+      <div class="sample"><div class="subtitle" style="text-align:left;margin-top:0">初めての方にも安心してご来店いただけるよう、よくいただくご質問にお答えします。</div></div>
+    </div>
+    <div class="spec">
+      <div class="meta"><b>BODY</b><span>14.5 / w400 / LH 2.0 / LS .03em</span></div>
+      <div class="sample"><p class="body">もちろん個人差はありますが、私たちは「肩こりを治すこと」ではなく、改善しやすい身体づくりを大切にしています。今まで整体やマッサージで改善しなかった方にも、多くご来店いただいています。</p></div>
+    </div>
+    <div class="spec">
+      <div class="meta"><b>CARD TITLE</b><span>17 / w600 / LH 1.6 / LS .03em / Serif</span></div>
+      <div class="sample"><div class="card-title">カウンセリング</div></div>
+    </div>
+    <div class="spec">
+      <div class="meta"><b>CAPTION</b><span>11.5 / w500 / LH 1.7 / LS .06em / Muted</span></div>
+      <div class="sample"><div class="caption">40代女性　悩み：肩こり・腰痛</div></div>
+    </div>
+    <div class="spec">
+      <div class="meta"><b>BUTTON</b><span>17 / w600 / LS .12em / Serif / White</span></div>
+      <div class="sample"><div class="btn">まずは身体を知る体験へ<span class="chev">›</span></div></div>
+    </div>
+  </section>
+
+  <!-- 3. EYEBROW COMPONENT -->
+  <section class="block">
+    <div class="eyebrow">Component</div>
+    <h2 class="title">アイブロウの<span class="em">統一ルール</span></h2>
+    <p class="subtitle">英字大文字・ティール1色・中央揃え・左右ヘアライン。全セクション共通の唯一の型。</p>
+    <div class="spec">
+      <div class="meta"><span>例</span></div>
+      <div class="sample" style="display:grid;gap:20px">
+        <div class="eyebrow" style="margin-bottom:0">YOUR CONCERNS</div>
+        <div class="eyebrow" style="margin-bottom:0">STORY OF CHANGE</div>
+        <div class="eyebrow" style="margin-bottom:0">TRIAL GUIDE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. OFFICIAL LABELS -->
+  <section class="block">
+    <div class="eyebrow">Labels</div>
+    <h2 class="title">正式<span class="em">ラベル</span>への統一</h2>
+    <div class="lbltable">
+      <div class="row head"><span>BEFORE</span><span></span><span style="text-align:right">AFTER</span></div>
+      <div class="row"><span class="before">あなたの悩み</span><span class="arrow">→</span><span class="after">Your Concerns</span></div>
+      <div class="row"><span class="before">（無し）</span><span class="arrow">→</span><span class="after">The Real Reason</span></div>
+      <div class="row"><span class="before">お客様の声</span><span class="arrow">→</span><span class="after">Voice</span></div>
+      <div class="row"><span class="before">Staff</span><span class="arrow">→</span><span class="after">Staff</span></div>
+      <div class="row"><span class="before">代表メッセージ</span><span class="arrow">→</span><span class="after">Message</span></div>
+      <div class="row"><span class="before fix">SECTION</span><span class="arrow">→</span><span class="after">FAQ</span></div>
+      <div class="row"><span class="before fix">最後のCTA</span><span class="arrow">→</span><span class="after">Start Here</span></div>
+    </div>
+    <p class="note">※ 制作途中の表記（SECTION／最後のCTA）を正式ラベルへ是正</p>
+  </section>
+
+  <!-- 5. SPACING -->
+  <section class="block">
+    <div class="eyebrow">Spacing</div>
+    <h2 class="title">余白の<span class="em">共通ルール</span></h2>
+    <div class="spec">
+      <div class="rule"><span class="val">14px</span><span>アイブロウ → タイトル</span><span class="bar"></span></div>
+      <div class="rule"><span class="val">18px</span><span>タイトル → サブタイトル</span><span class="bar"></span></div>
+      <div class="rule"><span class="val">16px</span><span>サブタイトル → 本文</span><span class="bar"></span></div>
+      <div class="rule"><span class="val">20px</span><span>タイトル → 本文（サブ無し）</span><span class="bar"></span></div>
+      <div class="rule"><span class="val">16px</span><span>本文ブロック間</span><span class="bar"></span></div>
+    </div>
+  </section>
+
+  <!-- 6. COMPOSED DEMO -->
+  <section class="block">
+    <div class="eyebrow">In Context</div>
+    <h2 class="title">システム<span class="em">適用イメージ</span></h2>
+    <p class="note">※ 文字ルールのみ適用（レイアウト・写真は現状のまま）</p>
+
+    <div class="demo">
+      <div class="stack">
+        <div class="eyebrow">Voice</div>
+        <h3 class="title">身体が変わると、<span class="em">毎日が変わる。</span></h3>
+        <p class="subtitle">お客様が本当に手に入れたのは、肩こりがない身体ではなく、好きなことを楽しめる毎日でした。</p>
+        <p class="body">整体やマッサージに通っても戻ってしまう——その繰り返しには理由があります。改善の順番を見直すことが、これからの毎日を変えていきます。</p>
+        <div class="btnwrap"><div class="btn">まずは身体を知る体験へ<span class="chev">›</span></div></div>
+        <p class="caption" style="text-align:center;margin-top:14px">初回体験 1,000円（税込）／ 所要時間 約60分</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="block" style="text-align:center">
+    <div class="logo" style="font-family:var(--font-serif);font-size:20px;color:var(--ink);letter-spacing:.06em">renico</div>
+    <p class="caption" style="margin-top:10px">Typography Design System v1 — 文字ルール統一</p>
+  </footer>
+
+</main>
+</body>
+</html>
