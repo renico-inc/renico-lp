@@ -84,8 +84,10 @@ img,svg{min-width:0}
 /* ---- ボタンの上品な呼吸アニメーション ---- */
 @keyframes ctaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.015)}}
 .ctabtn-anim{animation:ctaPulse 2.8s ease-in-out infinite;transition:transform .18s ease,filter .18s ease}
-.ctabtn-anim:hover{animation-play-state:paused;transform:scale(1.015);filter:brightness(1.06)}
 .ctabtn-anim:active{animation-play-state:paused;transform:scale(.985);filter:brightness(.97)}
+@media (hover:hover) and (pointer:fine){
+  .ctabtn-anim:hover{animation-play-state:paused;transform:scale(1.015);filter:brightness(1.06)}
+}
 @media (prefers-reduced-motion:reduce){.ctabtn-anim{animation:none}}
 
 /* ---- ボタン表面のキラリと光る演出（常時・控えめ） ---- */
