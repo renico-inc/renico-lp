@@ -1385,6 +1385,15 @@ document.querySelectorAll('.faqitem__q').forEach(function(btn){
     });
   }
 })();
+
+/* Meta Pixel: CTAボタン押下時に Lead イベントを送信（遷移は変更しない） */
+document.querySelectorAll('.hero__ctabtn, .ctadesign-btn, .ctabtn-link, .exitpopup__cta').forEach(function(cta){
+  cta.addEventListener('click', function(){
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead');
+    }
+  });
+});
 </script>
 </body>
 </html>
