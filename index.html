@@ -114,6 +114,11 @@ img,svg{min-width:0}
 .ctadesign-wrap{position:relative;display:block}
 .ctadesign-btn{position:absolute;top:79.5%;left:var(--pad);right:var(--pad);width:auto;display:block;-webkit-tap-highlight-color:rgba(0,0,0,0)}
 
+/* ---- CTAデザイン画像内「公式LINEから簡単予約」文言のマスク（画像は無加工、CSSで局所的に覆う） ---- */
+.ctadesign-linemask{position:absolute;top:90.8%;height:3.6%;left:0;right:0;
+  background-image:url(assets/sections/cta-design-mask.png);background-size:100% 100%;
+  background-repeat:no-repeat;pointer-events:none}
+
 /* ---- ボタンの上品な呼吸アニメーション ---- */
 @keyframes ctaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 .ctabtn-anim{animation:ctaPulse 2.2s ease-in-out infinite;transition:transform .18s ease,filter .18s ease}
@@ -705,6 +710,30 @@ img,svg{min-width:0}
 .trial__ctabtn{margin-top:28px}
 
 /* =========================================================
+   LINE相談CTA（第二導線／既存CTAより控えめな動き）
+   ========================================================= */
+.line-consult{margin-top:28px}
+.line-consult--imgsec{padding:0 var(--pad)}
+.line-consult-card{display:block;width:100%;height:auto}
+
+.line-consult-cta{position:relative;display:block;width:100%;margin-top:20px;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  animation:lineConsultPulse 2.6s ease-in-out infinite;
+  transition:transform .18s ease,filter .18s ease}
+.line-consult-cta img{display:block;width:100%;height:auto}
+.line-consult-cta:active{animation-play-state:paused;transform:scale(.955);filter:brightness(.97)}
+@keyframes lineConsultPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@media (prefers-reduced-motion:reduce){.line-consult-cta{animation:none}}
+
+.line-consult-shine{position:absolute;top:9.9%;bottom:12.1%;left:1.3%;right:1.9%;overflow:hidden;border-radius:999px;pointer-events:none}
+.line-consult-shine::after{content:"";position:absolute;top:0;left:0;bottom:0;width:26%;
+  background:linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.35) 45%, rgba(255,255,255,.35) 55%, rgba(255,255,255,0) 100%);
+  transform:translateX(-160%) skewX(-18deg);
+  animation:lineConsultShine 4.2s ease-in-out infinite}
+@keyframes lineConsultShine{0%,15%{transform:translateX(-160%) skewX(-18deg)}55%,100%{transform:translateX(480%) skewX(-18deg)}}
+@media (prefers-reduced-motion:reduce){.line-consult-shine::after{animation:none;display:none}}
+
+/* =========================================================
    共通装飾  —  水彩・葉っぱ・きらめき
    ========================================================= */
 .deco-wash{position:absolute;pointer-events:none;border-radius:50%;filter:blur(1px);z-index:0}
@@ -949,8 +978,17 @@ img,svg{min-width:0}
   <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #F7F2EC)"></div>
   <section class="imgsec" id="cta-s5" style="background:#F7F2EC">
     <div class="ctadesign-wrap">
-      <img src="assets/sections/cta-design.png" alt="最後の一歩は、もっと軽やかでいい。身体が変わる。毎日が変わる。人生が変わる。初めての方へ 体験60分 特別価格1,000円（税込） 完全予約制・プライベート空間 無理な勧誘はありません 元町駅徒歩3分、三宮駅徒歩5分 受付時間7:00〜21:00 公式LINEから簡単予約">
+      <img src="assets/sections/cta-design.png" alt="最後の一歩は、もっと軽やかでいい。身体が変わる。毎日が変わる。人生が変わる。初めての方へ 体験60分 特別価格1,000円（税込） 完全予約制・プライベート空間 無理な勧誘はありません 元町駅徒歩3分、三宮駅徒歩5分 受付時間7:00〜21:00">
+      <div class="ctadesign-linemask" aria-hidden="true"></div>
       <a class="ctadesign-btn ctabtn-anim" href="https://select-type.com/rsv/?id=0htzEvhGnhY" aria-label="まずは身体を知る体験へ"><img class="ctabtn-img" src="assets/cta-button-only.png" alt=""><span class="ctabtn-shine" aria-hidden="true"></span></a>
+    </div>
+
+    <div class="line-consult line-consult--imgsec">
+      <img class="line-consult-card" src="assets/sections/line-card.png" alt="体験前のご相談 体験前に、不安なことはありませんか？ 身体のお悩みや施術内容について、LINEでお気軽にご相談いただけます。痛みのこと、服装のこと、勧誘がないかなど、小さな不安でも安心してお問い合わせください。痛みの不安 服装の相談 無理な勧誘なし ご相談だけでも大丈夫です" width="1446" height="1087">
+      <a class="line-consult-cta" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=g3lcqx" target="_blank" rel="noopener noreferrer" aria-label="LINEで相談してみる">
+        <img src="assets/line-button-only.png" alt="LINEで相談してみる">
+        <span class="line-consult-shine" aria-hidden="true"></span>
+      </a>
     </div>
   </section>
   <div class="seam" style="background:linear-gradient(to bottom, #F7F2EC, var(--paper))"></div>
@@ -1199,6 +1237,14 @@ img,svg{min-width:0}
     <div class="trial__ctabtn">
       <a class="ctabtn-link ctabtn-anim" href="https://select-type.com/rsv/?id=0htzEvhGnhY" aria-label="まずは身体を知る体験へ"><img class="ctabtn-img" src="assets/cta-button-only.png" alt=""><span class="ctabtn-shine" aria-hidden="true"></span></a>
     </div>
+
+    <div class="line-consult">
+      <img class="line-consult-card" src="assets/sections/line-card.png" alt="体験前のご相談 体験前に、不安なことはありませんか？ 身体のお悩みや施術内容について、LINEでお気軽にご相談いただけます。痛みのこと、服装のこと、勧誘がないかなど、小さな不安でも安心してお問い合わせください。痛みの不安 服装の相談 無理な勧誘なし ご相談だけでも大丈夫です" width="1446" height="1087">
+      <a class="line-consult-cta" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=g3lcqx" target="_blank" rel="noopener noreferrer" aria-label="LINEで相談してみる">
+        <img src="assets/line-button-only.png" alt="LINEで相談してみる">
+        <span class="line-consult-shine" aria-hidden="true"></span>
+      </a>
+    </div>
   </section>
 
   <!-- ============ SECTION 13 : FAQ（最後の不安をなくす） ============ -->
@@ -1317,8 +1363,17 @@ img,svg{min-width:0}
   <div class="seam" style="background:linear-gradient(to bottom, var(--paper), #F7F2EC)"></div>
   <section class="imgsec" id="final" style="background:#F7F2EC">
     <div class="ctadesign-wrap">
-      <img src="assets/sections/cta-design.png" alt="最後の一歩は、もっと軽やかでいい。身体が変わる。毎日が変わる。人生が変わる。初めての方へ 体験60分 特別価格1,000円（税込） 完全予約制・プライベート空間 無理な勧誘はありません 元町駅徒歩3分、三宮駅徒歩5分 受付時間7:00〜21:00 公式LINEから簡単予約">
+      <img src="assets/sections/cta-design.png" alt="最後の一歩は、もっと軽やかでいい。身体が変わる。毎日が変わる。人生が変わる。初めての方へ 体験60分 特別価格1,000円（税込） 完全予約制・プライベート空間 無理な勧誘はありません 元町駅徒歩3分、三宮駅徒歩5分 受付時間7:00〜21:00">
+      <div class="ctadesign-linemask" aria-hidden="true"></div>
       <a class="ctadesign-btn ctabtn-anim" href="https://select-type.com/rsv/?id=0htzEvhGnhY" aria-label="まずは身体を知る体験へ"><img class="ctabtn-img" src="assets/cta-button-only.png" alt=""><span class="ctabtn-shine" aria-hidden="true"></span></a>
+    </div>
+
+    <div class="line-consult line-consult--imgsec">
+      <img class="line-consult-card" src="assets/sections/line-card.png" alt="体験前のご相談 体験前に、不安なことはありませんか？ 身体のお悩みや施術内容について、LINEでお気軽にご相談いただけます。痛みのこと、服装のこと、勧誘がないかなど、小さな不安でも安心してお問い合わせください。痛みの不安 服装の相談 無理な勧誘なし ご相談だけでも大丈夫です" width="1446" height="1087">
+      <a class="line-consult-cta" href="https://s.lmes.jp/landing-qr/2007528234-rR9G3e5E?uLand=g3lcqx" target="_blank" rel="noopener noreferrer" aria-label="LINEで相談してみる">
+        <img src="assets/line-button-only.png" alt="LINEで相談してみる">
+        <span class="line-consult-shine" aria-hidden="true"></span>
+      </a>
     </div>
   </section>
 
@@ -1401,6 +1456,15 @@ document.querySelectorAll('.hero__ctabtn, .ctadesign-btn, .ctabtn-link, .exitpop
   cta.addEventListener('click', function(){
     if (typeof fbq === 'function') {
       fbq('track', 'Lead');
+    }
+  });
+});
+
+/* Meta Pixel: LINE相談CTA押下時に Contact イベントを送信（Leadとは別系統・重複なし） */
+document.querySelectorAll('.line-consult-cta').forEach(function(cta){
+  cta.addEventListener('click', function(){
+    if (typeof fbq === 'function') {
+      fbq('track', 'Contact');
     }
   });
 });
